@@ -1,0 +1,21 @@
+{
+  "name": "finance-server-side",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "cheerio": "^0.22.0",
+    "domhandler": "^2.3.0",
+    "domutils": "^1.5.1",
+    "express": "^4.15.2",
+    "htmlparser2": "^3.9.2",
+    "request": "^2.81.0",
+    "scrape-it": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}

@@ -1,0 +1,2 @@
+::1 - - [30/Apr/2017:14:14:41 +0000] "GET /api/palmares HTTP/1.1" 200 2942 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.81 Safari/537.36"
+::1 - - [30/Apr/2017:14:14:57 +0000] "GET /api/palmares HTTP/1.1" 200 2942 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.81 Safari/537.36"
