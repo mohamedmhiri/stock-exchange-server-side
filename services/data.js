@@ -32,7 +32,7 @@ module.exports = {
                 if(key % 7 == 4)
                   topFive[Math.trunc(key/7)].volume = value.children[0].data
                 if(key % 7 == 5)
-                  topFive[Math.trunc(key/7)].var = value.children[0].data  
+                  topFive[Math.trunc(key/7)].variation = value.children[0].data  
             }
           })
           /*function Max(item) {
@@ -78,7 +78,7 @@ module.exports = {
                 if(key % 8 == 5)
                   market[Math.trunc(key/8)].volumeDT = value.children[0].data
             }else if (value.children[0].name == 'span') {
-                market[Math.trunc(key/8)].var = value.children[0].children[0].data
+                market[Math.trunc(key/8)].variation = value.children[0].children[0].data
             }
           })
           /*$('tr td span').each((key, value) => {
