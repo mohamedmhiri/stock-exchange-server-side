@@ -120,7 +120,7 @@ module.exports = {
 
           $('tr a').each((key, value) => {
             news[key] = {}
-            news[key].info = value.children[0].data
+            news[key].info = value.children[0].data.replace(/\t/g, '').replace(/\n/g, '').replace(/\r/g, '')
           })
           $('tr .sp1').each((key, value) => {
             news[key].date = value.children[0].data
