@@ -122,7 +122,7 @@ module.exports = {
             news[key] = {}
             news[key].info = value.children[0].data
           })
-          $('tr span.spa').each((key, value) => {
+          $('tr span .spa').each((key, value) => {
             news[key].date = value.children[0].data
           })
           res.json(news)
