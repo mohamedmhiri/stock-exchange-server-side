@@ -24,7 +24,7 @@ module.exports = {
             topFive[key].dernier = value.children[0].data
           })
           $('tr td').each((key, value) => {
-            if( value.children[0].data && ! value.children[0].next ){
+            if (value.children[0].data && !value.children[0].next) {
                 if(key % 7 == 1)
                   topFive[Math.trunc(key/7)].haut = value.children[0].data
                 if(key % 7 == 2)
@@ -109,5 +109,24 @@ module.exports = {
             //console.log(`${response}`)
             res.json(JSON.parse(response.body))
         })
-    }
+  },
+  // news
+  getNews: function (req, res) {
+    request(`${ilboursa}actualites_bourse_tunis.aspx`, (error, response, responseHtml) => {
+          // write the entire scraped page to the local file system
+          let tunindex = {}
+          let $ = cheerio.load(responseHtml)
+          let news = []
+
+          $('tr a').each((key, value) => {
+            news[key] = {}
+            news[key].info = value.children[0].data
+          })
+          $('tr span.spa').each((key, value) => {
+            news[key].date = value.children[0].data
+          })
+          res.json(news)
+        })
+  }
+
 }
