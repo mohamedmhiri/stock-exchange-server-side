@@ -7,7 +7,7 @@ const data = require('../controllers/data')
 
 router.get('/palmares', data.getPalmares)
 router.get('/market', data.getMarket)
-router.get('/convert', data.convert)
+router.post('/convert', data.convert)
 router.get('/news', data.getNews)
 // export router
 module.exports = router
