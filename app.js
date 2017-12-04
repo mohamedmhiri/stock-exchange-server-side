@@ -12,7 +12,7 @@ const rfs = require('rotating-file-stream')
 // Get our API routes
 const api = require('./routes/api')
 const util = require('./routes/data')
-
+const user = require('./routes/user')
 const app = express()
 const logDirectory = path.join(__dirname, 'log')
 
@@ -24,6 +24,10 @@ const accessLogStream = rfs('access.log', {
   interval: '1d', // rotate daily
   path: logDirectory
 })
+
+var DB = "mongodb://localhost/finance";
+var mongoose    = require('mongoose');
+
 
 // setup the logger
 app.use(morgan('combined', {stream: accessLogStream}))
@@ -43,12 +47,19 @@ app.use((req, res, next) => {
 // Set our api routes
 app.use('/', api)
 app.use('/api', util)
+app.use('/user', user)
 /**
  * Get port from environment and store in Express.
  */
 const port = process.env.PORT || '3000'
 app.set('port', port)
-
+mongoose.connect(DB, function(err) {
+    if (err) {
+        return err;
+    } else {
+        console.log('Successfully connected to ' + DB);
+    }
+});
 /**
  * Create HTTP server.
  */
