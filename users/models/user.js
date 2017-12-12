@@ -4,6 +4,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcryptjs');
+var transaction =require('../../transaction/models/transaction');
 var UserSchema = new Schema({
 
     nom:{
@@ -18,6 +19,7 @@ var UserSchema = new Schema({
     password:{
         type: String
     }
+   // ,  transaction : { type: Schema.Types.ObjectId, ref: 'transaction' },
 });
 
 UserSchema.pre('save', function (next) {

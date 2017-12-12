@@ -67,7 +67,7 @@ module.exports= {
 
     findUser:function(req, res, next) {
         user.findOne({
-            username: req.params.id
+            email: req.params.mail
         }, function(err, user) {
             if (err) throw err;
 
@@ -76,11 +76,11 @@ module.exports= {
             } else res.status(200).json(user);
 
 
-            }).populate('company');
+            }).populate('transaction');
     },
     updateUser:function(req, res, next) {
         user.findOneAndUpdate({
-            username: req.params.id
+              email: req.params.mail
         },req.body, function(err, user) {
             if (err) throw err;
 

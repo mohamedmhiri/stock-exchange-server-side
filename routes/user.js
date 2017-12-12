@@ -13,8 +13,8 @@ var myPassportService = require('../users/config/passport')(passport);
 router.post('/authenticate',users.login);
 router.post('/signup',users.SignUp);
 
-router.put('/update/:id',users.updateUser);
-router.get('/findUser/:id',users.findUser);
+router.put('/update/:mail',users.updateUser);
+router.get('/get/:mail',users.findUser);
 
 router.get('/info', passport.authenticate('jwt', { session: false}),users.memberinfo);
 module.exports = router;
