@@ -13,6 +13,7 @@ const rfs = require('rotating-file-stream')
 const api = require('./routes/api')
 const util = require('./routes/data')
 const user = require('./routes/user')
+const transaction = require('./routes/transaction')
 const app = express()
 const logDirectory = path.join(__dirname, 'log')
 
@@ -48,6 +49,7 @@ app.use((req, res, next) => {
 app.use('/', api)
 app.use('/api', util)
 app.use('/user', user)
+app.use('/transaction', transaction)
 /**
  * Get port from environment and store in Express.
  */
