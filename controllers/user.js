@@ -23,47 +23,47 @@ getToken = function (headers) {
 module.exports= {
 
     login: function(req, res) {
-  user.findOne({
-    email: req.body.email
-  }, function(err, user) {
-    if (err) throw err;
- 
-    if (!user) {
-      res.send({success: false, msg: 'Authentication failed. User not found.'});
-    } else {
-      // check if password matches
-      user.comparePassword(req.body.password, function (err, isMatch) {
-        if (isMatch && !err) {
-          // if user is found and password is right create a token
-          var token = jwt.encode(user, config.secret);
-          // return the information including token as JSON
-          res.json({success: true, token: 'JWT ' + token});
+      user.findOne({
+        email: req.body.email
+      }, function(err, user) {
+        if (err) throw err;
+
+        if (!user) {
+          res.send({success: false, msg: 'Authentication failed. User not found.'});
         } else {
-          res.send({success: false, msg: 'Authentication failed. Wrong password.'});
+          // check if password matches
+          user.comparePassword(req.body.password, function (err, isMatch) {
+            if (isMatch && !err) {
+              // if user is found and password is right create a token
+              var token = jwt.encode(user, config.secret);
+              // return the information including token as JSON
+              res.json({success: true, token: 'JWT ' + token});
+            } else {
+              res.send({success: false, msg: 'Authentication failed. Wrong password.'});
+            }
+          });
         }
       });
-    }
-  });
-},
+    },
     SignUp: function(req, res) {
-  if (!req.body.nom || !req.body.password) {
-    res.json({success: false, msg: 'Please pass name and password.'});
-  } 
-      else
-      {var newUser = new user({
-      nom: req.body.nom,
-      password: req.body.password,
-       email:req.body.email
-
-    });
-    // save the user
-    newUser.save(function(err) {
-      if (err) {
-        return res.json({success: false, msg: 'Username already exists.',err:err});
+      if (!req.body.nom || !req.body.password) {
+        res.json({success: false, msg: 'Please pass name and password.'});
       }
-      res.json({success: true, msg: 'Successful created new user.',username:user.nom});
-    });}
-  },
+          else
+          {var newUser = new user({
+          nom: req.body.nom,
+          password: req.body.password,
+           email:req.body.email
+
+        });
+        // save the user
+        newUser.save(function(err) {
+          if (err) {
+            return res.json({success: false, msg: 'Username already exists.',err:err});
+          }
+          res.json({success: true, msg: 'Successful created new user.',username:user.nom});
+        });}
+      },
 
     findUser:function(req, res, next) {
         user.findOne({
